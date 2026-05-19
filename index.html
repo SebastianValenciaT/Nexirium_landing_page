@@ -1204,8 +1204,11 @@
     }
     @media (max-width: 768px) {
       nav { width: 100%; padding: 12px 18px; }
+      .nav-logo { margin-right: auto; }
       .nav-links { display: none; }
+      .theme-toggle { order: 2; margin-left: 0; margin-right: 12px; }
       .hamburger { display: flex; }
+      .hamburger { order: 3; }
       .services-grid,
       .why-grid { grid-template-columns: 1fr; }
       .service-card.hero { grid-column: 1; }
@@ -1427,7 +1430,7 @@
 
     [data-theme="light"] .faq-item { border-color: rgba(0,0,0,.08); }
     [data-theme="light"] .faq-item:first-child { border-color: rgba(0,0,0,.08); }
-    [data-theme="light"] .faq-q { color: var(--neutral-800); }
+    [data-theme="light"] .faq-q { color: #203552; }
     [data-theme="light"] .faq-q:hover { color: var(--navy-300); }
     [data-theme="light"] .faq-icon {
       background: rgba(61,96,153,.08);
@@ -2269,20 +2272,58 @@
   });
 
   /* ── FORM SUBMIT (placeholder) ── */
-  function handleSubmit(e) {
+  const WEB3FORMS_KEY = 'f281ff29-4cc5-48b4-a88a-9c0bbaa160ce'; // ← reemplaza con tu clave de web3forms.com
+
+  async function handleSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    btn.textContent = '✓ Mensaje enviado';
-    btn.style.background = '#3DAA73';
-    btn.style.boxShadow = '0 0 24px rgba(61,170,115,.3)';
+    const originalHTML = btn.innerHTML;
+
+    btn.textContent = 'Enviando…';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.innerHTML = 'Quiero una propuesta gratuita <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-      btn.style.background = '';
-      btn.style.boxShadow = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3000);
+
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'Nueva consulta desde nexirium.tech — ' + (document.getElementById('f-service').value || 'Sin servicio seleccionado'),
+      from_name: document.getElementById('f-name').value,
+      email: document.getElementById('f-email').value,
+      Negocio: document.getElementById('f-biz').value || '—',
+      WhatsApp: document.getElementById('f-phone').value || '—',
+      Servicio: document.getElementById('f-service').value || '—',
+      Mensaje: document.getElementById('f-msg').value || '—',
+    };
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        btn.textContent = '✓ Mensaje enviado';
+        btn.style.background = '#3DAA73';
+        btn.style.boxShadow = '0 0 24px rgba(61,170,115,.3)';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.style.boxShadow = '';
+          btn.disabled = false;
+          e.target.reset();
+        }, 3500);
+      } else {
+        throw new Error(result.message || 'Error desconocido');
+      }
+    } catch (err) {
+      btn.textContent = 'Error al enviar — intenta de nuevo';
+      btn.style.background = '#c0392b';
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    }
   }
 </script>
 </body>
