@@ -580,52 +580,77 @@
 
     /* ── PROBLEM ── */
     #problem { background: linear-gradient(180deg, transparent, rgba(7,13,26,.5), transparent); }
-    #problem .wrap {
+    #problem .wrap { display: block; }
+    .problem-head { margin-bottom: var(--space-12); }
+    .problem-head .heading { max-width: 820px; font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    .problem-head .body-text { max-width: 520px; }
+    .problem-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(232,160,32,.28), rgba(232,160,32,.06), transparent);
+      margin-bottom: var(--space-12);
+    }
+    .problem-stats {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 80px;
-      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,.07);
     }
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .pstat { padding: var(--space-8) 36px var(--space-8) 0; }
+    .pstat + .pstat {
+      padding-left: 36px;
+      border-left: 1px solid rgba(255,255,255,.07);
     }
-    .stat-card {
-      background: var(--navy-800);
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: var(--radius-xl);
-      padding: 24px;
-      transition: transform .35s, opacity .35s;
-    }
-    .stat-card:hover {
-      border-color: rgba(232,160,32,.16);
-      transform: translateY(-3px);
-      box-shadow: var(--glow-gold);
-    }
-    .stat-num {
+    .pstat-num {
       display: block;
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: clamp(2.6rem, 3.8vw, 4rem);
       font-weight: 800;
       color: var(--gold-500);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+      transition: color .3s;
     }
-    .stat-label {
-      color: var(--neutral-500);
+    .pstat:hover .pstat-num { color: var(--gold-300); }
+    .pstat-txt { white-space: nowrap; }
+    .pstat-lite {
+      font-size: .36em;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--neutral-600);
+      vertical-align: middle;
+    }
+    .pstat-label {
+      display: block;
       font-size: 13px;
+      color: var(--neutral-400);
       line-height: 1.55;
+      margin-bottom: 14px;
     }
-    .stat-card.wide {
-      grid-column: 1 / -1;
-      display: flex;
+    .pstat-source {
+      display: inline-flex;
       align-items: center;
-      gap: 20px;
-      background: linear-gradient(135deg, rgba(232,160,32,.07), rgba(232,160,32,.02));
-      border-color: rgba(232,160,32,.18);
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--neutral-700);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-full);
+      padding: 3px 10px;
     }
-    .stat-card.wide .stat-num { font-size: 3.2rem; flex-shrink: 0; }
+    .pstat-source::before {
+      content: '';
+      display: block;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold-600);
+      flex-shrink: 0;
+    }
 
     /* ── SERVICES ── */
     .services-grid {
@@ -1145,9 +1170,11 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      #problem .wrap,
       #vision .wrap,
       #contact .wrap { grid-template-columns: 1fr; gap: 52px; }
+      .problem-stats { grid-template-columns: 1fr 1fr; }
+      .pstat:nth-child(3) { border-left: none; padding-left: 0; }
+      .pstat:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.07); padding-top: var(--space-8); }
       .services-grid, .why-grid { grid-template-columns: 1fr 1fr; }
       .process-steps { grid-template-columns: 1fr; gap: 40px; }
       .process-steps::before { display: none; }
@@ -1309,19 +1336,18 @@
       border-color: rgba(0,0,0,.05);
     }
 
-    [data-theme="light"] .stat-card {
-      background: #FFFFFF;
-      border-color: rgba(0,0,0,.06);
-      box-shadow: 0 2px 14px rgba(0,0,0,.05);
+    [data-theme="light"] .problem-rule {
+      background: linear-gradient(90deg, rgba(232,160,32,.45), rgba(232,160,32,.1), transparent);
     }
-    [data-theme="light"] .stat-card:hover {
-      border-color: rgba(32,53,82,.15);
-      box-shadow: 0 8px 28px rgba(0,0,0,.08), var(--glow-gold);
-    }
-    [data-theme="light"] .stat-card.wide {
-      background: linear-gradient(135deg, rgba(61,96,153,.07), rgba(61,96,153,.02));
-      border-color: rgba(32,53,82,.16);
-      box-shadow: none;
+    [data-theme="light"] .problem-stats,
+    [data-theme="light"] .pstat + .pstat,
+    [data-theme="light"] .pstat:nth-child(n+3) { border-color: rgba(0,0,0,.08); }
+    [data-theme="light"] .pstat-label { color: var(--neutral-600); }
+
+    [data-theme="light"] .pstat-source {
+      background: rgba(0,0,0,.03);
+      border-color: rgba(0,0,0,.08);
+      color: var(--neutral-500);
     }
 
     [data-theme="light"] .service-card {
@@ -1571,10 +1597,10 @@
 <!-- ════════════ PROBLEM ════════════ -->
 <section id="problem">
   <div class="wrap">
-    <div class="problem-left">
+    <div class="problem-head">
       <div class="tag r">El problema</div>
       <h2 class="heading r d1">
-        La mayoría de los negocios en Juárez operan sin
+        Más de 40,000 negocios en Juárez operan sin
         <em>tecnología que los impulse</em>
       </h2>
       <p class="body-text r d2">
@@ -1584,20 +1610,28 @@
       </p>
     </div>
 
-    <div class="problem-right">
-      <div class="stat-grid">
-        <div class="stat-card wide r">
-          <span class="stat-num" data-target="40" data-suffix="K+">0</span>
-          <span class="stat-label">MiPyMEs registradas en Ciudad Juárez</span>
-        </div>
-        <div class="stat-card r d1">
-          <span class="stat-num" data-target="70" data-suffix="%">0</span>
-          <span class="stat-label">Negocios con procesos manuales</span>
-        </div>
-        <div class="stat-card r d2">
-          <span class="stat-num" data-target="82" data-suffix="%">0</span>
-          <span class="stat-label">Interés positivo en digitalización<br><small style="opacity:.7">(encuesta abr. 2026, n=33)</small></span>
-        </div>
+    <div class="problem-rule r d3"></div>
+
+    <div class="problem-stats">
+      <div class="pstat r d1">
+        <span class="pstat-num" data-target="85" data-suffix="%">0</span>
+        <span class="pstat-label">Sin estrategia digital efectiva</span>
+        <span class="pstat-source">INEGI · Censo Económico 2024</span>
+      </div>
+      <div class="pstat r d2">
+        <span class="pstat-num" data-target="82" data-suffix="%">0</span>
+        <span class="pstat-label">Con interés positivo en digitalización</span>
+        <span class="pstat-source">Encuesta Nexírium · abr. 2026</span>
+      </div>
+      <div class="pstat r d3">
+        <span class="pstat-num" data-target="70" data-suffix="%">0</span>
+        <span class="pstat-label">Usan papel, cuadernos o Excel para operar</span>
+        <span class="pstat-source">Encuesta Nexírium · abr. 2026</span>
+      </div>
+      <div class="pstat r d4">
+        <span class="pstat-num pstat-txt"><span>1</span> <span class="pstat-lite">de cada</span> <span>3</span></span>
+        <span class="pstat-label">Pierde dinero por descontrol en inventarios</span>
+        <span class="pstat-source">Encuesta Nexírium · abr. 2026</span>
       </div>
     </div>
   </div>
