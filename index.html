@@ -212,8 +212,28 @@
     }
     .nav-logo img {
       height: 25px;
-      filter: brightness(4.5) invert(1);
+      display: none;
+    }
+
+    /* Isologo (icon + NEXIRIUM text stacked, viewBox 1221×734) */
+    .nav-logo .logo {
+      width: 140px;
+      height: 25px;
       display: block;
+      flex-shrink: 0;
+      background-color: var(--gold-500);
+      -webkit-mask: url("IMAGOTIPO.svg") center / contain no-repeat;
+      mask: url("IMAGOTIPO.svg") center / contain no-repeat;
+    }
+
+    /* Light theme: logo → navy */
+    [data-theme="light"] .nav-logo .logo {
+      background-color: #203552; /* El azul marino exacto de la imagen */
+    }
+
+    /* Dark theme (default): logo → gold */
+    html:not([data-theme="light"]) .nav-logo .logo {
+      background-color: var(--gold-500);
     }
 
     .nav-links {
@@ -287,13 +307,14 @@
       border-bottom: 1px solid rgba(255,255,255,.05);
       border-radius: 0;
       backdrop-filter: blur(24px);
-      padding: 12px 5%;
+      padding: 12px 0;
       z-index: 490;
       display: none;
       flex-direction: column;
       gap: 4px;
       transform-origin: top center;
       animation: menuOpen .25s ease forwards;
+      box-sizing: border-box;
     }
     .mobile-menu.open { display: flex; }
     @keyframes menuOpen {
@@ -305,9 +326,10 @@
       text-decoration: none;
       font-size: 15px;
       font-weight: 500;
-      padding: 12px 8px;
+      padding: 12px 5%;
       border-radius: var(--radius-md);
       transition: color .2s, background .2s;
+      box-sizing: border-box;
     }
     .mobile-menu a:hover { color: var(--gold-400); background: rgba(232,160,32,.06); }
     .mobile-menu .m-cta {
@@ -1181,7 +1203,7 @@
       .step { padding-right: 0; z-index: auto; }
     }
     @media (max-width: 768px) {
-      nav { width: calc(100% - 32px); padding: 12px 18px; }
+      nav { width: 100%; padding: 12px 18px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .services-grid,
@@ -1529,7 +1551,7 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">
-    <img src="IMAGOTIPO.svg" alt="Nexírium" id="logo-img">
+    <span class="logo" role="img" aria-label="Nexírium"></span>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Servicios</a></li>
@@ -1539,10 +1561,10 @@
     <li><a href="#contact" class="nav-cta">Contáctanos</a></li>
   </ul>
   <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
-    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" style="stroke: var(--gold-500); fill: none;" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
     </svg>
-    <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" style="stroke: var(--gold-500); fill: var(--gold-500);" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
     </svg>
   </button>
