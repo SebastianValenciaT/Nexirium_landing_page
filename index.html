@@ -752,35 +752,46 @@
     .process-steps::before {
       content: '';
       position: absolute;
-      top: 22px; left: calc(16.66% + 8px); right: calc(16.66% + 8px);
+      top: 24px;
+      left: 52px;
+      right: calc(33.33% + 4px);
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(232,160,32,.25) 25%, rgba(232,160,32,.25) 75%, transparent);
+      background: linear-gradient(90deg, rgba(232,160,32,.35), rgba(232,160,32,.35));
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1s cubic-bezier(.4,0,.2,1) .5s;
+      z-index: 0;
     }
+    .process-steps.line-in::before { transform: scaleX(1); }
     .step {
-      padding-right: 32px;
+      padding-right: 40px;
       position: relative;
+      z-index: 1;
+      transition: transform .38s ease;
     }
+    .step:hover { transform: translateY(-6px); }
     .step-num {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 44px; height: 44px;
-      background: var(--navy-800);
-      border: 1px solid rgba(232,160,32,.22);
+      width: 48px; height: 48px;
+      background: var(--navy-900);
+      border: 1.5px solid rgba(232,160,32,.28);
       border-radius: var(--radius-full);
       font-family: var(--font-display);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--gold-500);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       position: relative;
       z-index: 1;
-      transition: background .3s, border-color .3s, box-shadow .3s;
+      transition: background .3s, border-color .3s, box-shadow .3s, transform .3s;
     }
     .step:hover .step-num {
       background: rgba(232,160,32,.1);
       border-color: var(--gold-500);
-      box-shadow: 0 0 22px rgba(232,160,32,.22);
+      box-shadow: 0 0 28px rgba(232,160,32,.3);
+      transform: scale(1.1);
     }
     .step-tag {
       font-size: 9.5px;
@@ -788,20 +799,22 @@
       letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--gold-600);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .step h3 {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       letter-spacing: -.01em;
+      transition: color .25s;
     }
+    .step:hover h3 { color: var(--gold-300); }
     .step p {
       color: var(--neutral-500);
       font-size: 14px;
       line-height: 1.75;
-      font-weight: 300;
+      font-weight: 400;
       max-width: 280px;
     }
 
@@ -1138,7 +1151,7 @@
       .services-grid, .why-grid { grid-template-columns: 1fr 1fr; }
       .process-steps { grid-template-columns: 1fr; gap: 40px; }
       .process-steps::before { display: none; }
-      .step { padding-right: 0; }
+      .step { padding-right: 0; z-index: auto; }
     }
     @media (max-width: 768px) {
       nav { width: calc(100% - 32px); padding: 12px 18px; }
@@ -1375,19 +1388,19 @@
     }
     [data-theme="light"] .faq-item.open .faq-icon { background: rgba(61,96,153,.16); }
 
+    [data-theme="light"] .process-steps::before {
+      background: linear-gradient(90deg, rgba(32,53,82,.2), rgba(32,53,82,.2));
+    }
     [data-theme="light"] .step-num {
       background: #FFFFFF;
-      border-color: rgba(32,53,82,.22);
-      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      border-color: rgba(32,53,82,.28);
     }
     [data-theme="light"] .step:hover .step-num {
-      background: rgba(61,96,153,.1);
+      background: rgba(61,96,153,.08);
       border-color: #3D6099;
-      box-shadow: 0 0 22px rgba(61,96,153,.3);
+      box-shadow: 0 0 22px rgba(61,96,153,.28);
     }
-    [data-theme="light"] .process-steps::before {
-      background: linear-gradient(90deg, transparent, rgba(32,53,82,.16) 25%, rgba(32,53,82,.16) 75%, transparent);
-    }
+    [data-theme="light"] .step:hover h3 { color: var(--navy-300); }
 
     [data-theme="light"] .btn-ghost {
       border-color: rgba(0,0,0,.16);
@@ -2180,6 +2193,14 @@
       card.style.transform = '';
     });
   });
+
+  /* ── HOW IT WORKS — line draw on scroll ── */
+  const lineEl = document.querySelector('.process-steps');
+  if (lineEl) {
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) e.target.classList.add('line-in');
+    }, { threshold: .3 }).observe(lineEl);
+  }
 
   /* ── FAQ ACCORDION ── */
   document.querySelectorAll('.faq-q').forEach(btn => {
