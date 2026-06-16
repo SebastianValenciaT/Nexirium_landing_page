@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos y Condiciones | Nexírium</title>
+  <meta name="description" content="Términos y Condiciones de Servicio de Nexírium.">
+  <meta name="theme-color" content="#070D1A">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('nx-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}else if(!t&&!window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <style>
+    :root {
+      --navy-900: #070D1A;
+      --navy-950: #040A12;
+      --navy-800: #0D1625;
+      --gold-300: #F5C060;
+      --gold-400: #F0B840;
+      --gold-500: #E8A020;
+      --neutral-100: #EDECEA;
+      --neutral-200: #D9D8D4;
+      --neutral-300: #C2C0BB;
+      --neutral-400: #A8A5A0;
+      --neutral-500: #8C8983;
+      --neutral-600: #706D68;
+      --neutral-700: #504D49;
+      --neutral-800: #3D3A37;
+      --font-display: 'Merriweather', Georgia, serif;
+      --font-body: 'Montserrat', Arial, sans-serif;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+    body {
+      background: var(--navy-900);
+      color: var(--neutral-100);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold-500);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 5%;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background-color .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+    }
+    nav.solid {
+      background: rgba(7,13,26,.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom-color: rgba(255,255,255,.05);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo .logo {
+      width: 140px;
+      height: 25px;
+      display: block;
+      background-color: var(--gold-500);
+      -webkit-mask: url("IMAGOTIPO.svg") center / contain no-repeat;
+      mask: url("IMAGOTIPO.svg") center / contain no-repeat;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--neutral-500);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--neutral-200); }
+    .nav-cta {
+      color: var(--gold-500) !important;
+      padding: 6px 14px;
+      border: 1px solid rgba(232,160,32,.35);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(232,160,32,.08);
+      border: 1px solid rgba(232,160,32,.2);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      color: var(--gold-500);
+      transition: background .22s, border-color .22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-toggle svg {
+      position: absolute;
+      transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .3s ease;
+    }
+    .icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+    .icon-moon { opacity: 0; transform: rotate(-90deg) scale(.55); }
+    [data-theme="light"] .icon-sun { opacity: 0; transform: rotate(90deg) scale(.55); }
+    [data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--neutral-300);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      top: 62px;
+      left: 0;
+      right: 0;
+      background: rgba(7,13,26,.96);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      backdrop-filter: blur(24px);
+      padding: 12px 0;
+      z-index: 490;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--neutral-400);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 5%;
+      border-radius: var(--radius-md);
+      transition: color .2s, background .2s;
+    }
+    .mobile-menu a:hover { color: var(--gold-400); background: rgba(232,160,32,.06); }
+
+    main { padding: 112px 5% 72px; }
+    .legal-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .legal-kicker {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-500);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .legal-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .legal-subtitle {
+      color: var(--neutral-500);
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+    .legal-card {
+      background: linear-gradient(145deg, var(--navy-800), rgba(13,22,37,.92));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius-xl);
+      padding: clamp(20px, 3vw, 36px);
+    }
+    .legal-section + .legal-section {
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .legal-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+      color: var(--neutral-200);
+    }
+    .legal-section p,
+    .legal-section li {
+      color: var(--neutral-400);
+      font-size: 14px;
+      line-height: 1.82;
+    }
+    .legal-section ul {
+      margin-top: 8px;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.05);
+      background: var(--navy-950);
+      padding: 64px 8% 0;
+    }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 64px;
+      padding-bottom: 48px;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 19px;
+      color: var(--neutral-200);
+      margin-bottom: 12px;
+    }
+    .footer-brand span { color: var(--gold-500); }
+    .footer-brand-desc {
+      color: var(--neutral-700);
+      font-size: 13.5px;
+      line-height: 1.72;
+      max-width: 250px;
+      margin-bottom: 24px;
+    }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social {
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neutral-600);
+      text-decoration: none;
+      transition: background .22s, border-color .22s, color .22s;
+    }
+    .footer-social:hover {
+      background: rgba(232,160,32,.09);
+      border-color: rgba(232,160,32,.22);
+      color: var(--gold-400);
+    }
+    .footer-col-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--neutral-600);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: var(--neutral-700);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold-400); }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 13px; }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--neutral-700);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .footer-contact-item svg { flex-shrink: 0; color: var(--gold-500); margin-top: 1px; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-copy, .footer-tag {
+      color: var(--neutral-800);
+      font-size: 12.5px;
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --navy-900: #F8F5F0;
+      --navy-950: #EDE9E3;
+      --navy-800: #FFFFFF;
+      --gold-300: #6A8FB8;
+      --gold-400: #3D6099;
+      --gold-500: #203552;
+      --neutral-100: #0E0C0A;
+      --neutral-200: #1F1D1B;
+      --neutral-300: #2E2C29;
+      --neutral-400: #3D3A37;
+      --neutral-500: #504D49;
+      --neutral-600: #706D68;
+      --neutral-700: #A8A5A0;
+      --neutral-800: #C2C0BB;
+    }
+    [data-theme="light"] nav.solid {
+      background: rgba(248,245,240,.88);
+      border-bottom-color: rgba(0,0,0,.06);
+    }
+    [data-theme="light"] .mobile-menu {
+      background: rgba(248,245,240,.98);
+      border-bottom-color: rgba(0,0,0,.06);
+    }
+    [data-theme="light"] .nav-links a:hover { color: var(--neutral-200); }
+    [data-theme="light"] .legal-card {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,.07);
+      box-shadow: 0 2px 14px rgba(0,0,0,.05);
+    }
+    [data-theme="light"] .legal-section + .legal-section { border-top-color: rgba(0,0,0,.08); }
+    [data-theme="light"] footer {
+      border-color: rgba(0,0,0,.06);
+      background: #EDECEA;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 12px 18px; }
+      .nav-links { display: none; }
+      .theme-toggle { order: 2; margin-right: 12px; }
+      .hamburger { display: flex; order: 3; }
+      .footer-top { grid-template-columns: 1fr; gap: 34px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      main { padding-top: 98px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html#hero" class="nav-logo" aria-label="Nexírium inicio">
+    <span class="logo" role="img" aria-label="Nexírium"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Servicios</a></li>
+    <li><a href="index.html#how">Cómo trabajamos</a></li>
+    <li><a href="index.html#why">Por qué nosotros</a></li>
+    <li><a href="index.html#vision">Visión</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contáctanos</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" style="stroke: var(--gold-500); fill: none;" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+    </svg>
+    <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" style="stroke: var(--gold-500); fill: var(--gold-500);" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+    </svg>
+  </button>
+  <button class="hamburger" id="burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mob-menu">
+  <a href="index.html#services">Servicios</a>
+  <a href="index.html#how">Cómo trabajamos</a>
+  <a href="index.html#why">Por qué nosotros</a>
+  <a href="index.html#vision">Visión</a>
+  <a href="index.html#contact">Contáctanos</a>
+</div>
+
+<main>
+  <div class="legal-wrap">
+    <span class="legal-kicker">Legal</span>
+    <h1 class="legal-title">Términos y Condiciones de Servicio</h1>
+    <p class="legal-subtitle">Nexírium · Vigente desde junio de 2026</p>
+
+    <article class="legal-card">
+      <section class="legal-section">
+        <h2>1. Quiénes somos</h2>
+        <p>Nexírium es una empresa de desarrollo de software con sede en Ciudad Juárez, Chihuahua, México, enfocada en crear soluciones tecnológicas a la medida para micro y pequeñas empresas. Al contactarnos, solicitar una propuesta o contratar cualquiera de nuestros servicios, aceptas los términos descritos en este documento.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>2. Servicios que ofrecemos</h2>
+        <p>Nexírium presta los siguientes servicios:</p>
+        <ul>
+          <li>Sistemas a la medida (MVP): Desarrollo de software personalizado con base en los procesos específicos de tu negocio.</li>
+          <li>Apps web y móviles: Desarrollo de aplicaciones accesibles desde navegador o dispositivo móvil.</li>
+          <li>Diseño UI/UX: Diseño de experiencia de usuario previo al desarrollo, con entrega de prototipos navegables.</li>
+          <li>Mantenimiento y soporte: Servicio continuo de correcciones, actualizaciones y atención a incidencias bajo suscripción mensual.</li>
+          <li>Consultoría tecnológica: Asesoría para identificar las necesidades digitales del negocio y definir la solución más adecuada.</li>
+        </ul>
+        <p>Los servicios marcados como Próximamente (Inteligencia Artificial y Ciencia de Datos) no están disponibles aún y no generan obligación de contratación hasta que sean lanzados formalmente.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>3. Proceso de contratación</h2>
+        <p>Ningún servicio se activa mediante el formulario de contacto del sitio. El formulario es únicamente una solicitud de propuesta sin costo ni compromiso. El servicio inicia formalmente cuando ambas partes firman una propuesta o contrato de proyecto que especifica el alcance, costo, tiempos de entrega y condiciones de pago.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>4. Pagos y modelo de cobro</h2>
+        <ul>
+          <li>Proyectos de desarrollo (MVP, apps, diseño): Los pagos se realizan por etapas conforme al avance del proyecto. Nexírium nunca solicita el 100% del costo por adelantado. El esquema de pagos se detalla en la propuesta de cada proyecto.</li>
+          <li>Mantenimiento y soporte mensual: Se factura al inicio de cada periodo. La falta de pago en los plazos acordados puede resultar en la suspensión temporal del servicio hasta regularizar el adeudo.</li>
+          <li>Cambios de alcance: Cualquier modificación al alcance original acordado que implique trabajo adicional será cotizada y aprobada por escrito antes de ejecutarse. No existe cobro sorpresa.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>5. Propiedad intelectual</h2>
+        <p>Una vez completado el pago total del proyecto, el cliente recibe los derechos de uso del software desarrollado específicamente para su negocio. Nexírium conserva la propiedad de los componentes, librerías y herramientas base que no fueron creados exclusivamente para el proyecto. El cliente no puede revender ni sublicenciar el software sin autorización escrita de Nexírium.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>6. Confidencialidad</h2>
+        <p>Nexírium tratará como información confidencial todos los datos operativos, financieros y comerciales que el cliente comparta durante el desarrollo del proyecto. Esta información no será divulgada a terceros sin consentimiento explícito del cliente, salvo obligación legal. El cliente, por su parte, acepta no divulgar metodologías, estructuras técnicas ni documentación interna de Nexírium a terceros.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>7. Plazos y entregas</h2>
+        <p>Los tiempos estimados de entrega —como el rango de 4 a 8 semanas para un MVP— son proyecciones iniciales basadas en el alcance acordado. Los plazos definitivos se establecen en la propuesta firmada. Nexírium se compromete a comunicar con anticipación cualquier variación en los tiempos y a no iniciar trabajo fuera del alcance original sin aprobación del cliente.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>8. Limitación de responsabilidad</h2>
+        <p>Nexírium entrega software funcional conforme al alcance acordado, pero no garantiza resultados de negocio específicos derivados del uso del sistema. No nos hacemos responsables de pérdidas indirectas causadas por interrupciones del servicio de alojamiento de terceros, fallas de conectividad a internet o uso incorrecto del sistema por parte del cliente o su personal.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>9. Cancelaciones</h2>
+        <ul>
+          <li>Proyectos en desarrollo: Si el cliente decide cancelar durante el proceso, los pagos realizados por etapas completadas no son reembolsables. El trabajo entregado hasta ese momento queda disponible para el cliente.</li>
+          <li>Suscripción de mantenimiento: El cliente puede cancelar el servicio mensual con un aviso mínimo de 15 días naturales antes del siguiente periodo de facturación.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>10. Modificaciones a estos términos</h2>
+        <p>Nexírium puede actualizar estos términos en cualquier momento. Los cambios aplicarán a contratos nuevos a partir de su publicación. Los proyectos en curso se rigen por los términos vigentes al momento de la firma del contrato.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>11. Ley aplicable</h2>
+        <p>Estos términos se rigen por las leyes vigentes en los Estados Unidos Mexicanos. En caso de controversia, las partes buscarán una solución de buena fe. De no llegar a acuerdo, la jurisdicción aplicable será la de los tribunales competentes de Ciudad Juárez, Chihuahua.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>12. Contacto</h2>
+        <p>Para cualquier duda sobre estos términos, escríbenos a través del formulario en el sitio o por WhatsApp. Respondemos en menos de 24 horas.</p>
+        <p>Nexírium · Ciudad Juárez, Chihuahua, México</p>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Nex<span>í</span>rium</div>
+      <p class="footer-brand-desc">Software a la medida para micro y pequeñas empresas en Ciudad Juárez. Digitalizamos tu negocio sin inversión inicial elevada.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/profile.php?id=61590561814295" class="footer-social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0 -11.56 9.88v-6.99h-2.1V12h2.1V9.8c0-2.07 1.23-3.21 3.11-3.21.9 0 1.84.16 1.84.16v2.03h-1.04c-1.02 0-1.34.63-1.34 1.28V12h2.29l-.37 2.89h-1.92v6.99A10 10 0 0 0 22 12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/nexirium.tech/" class="footer-social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Navegación</div>
+      <ul class="footer-links">
+        <li><a href="index.html#services">Servicios</a></li>
+        <li><a href="index.html#how">Cómo funciona</a></li>
+        <li><a href="index.html#why">Por qué Nexírium</a></li>
+        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        <li><a href="index.html#contact">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact-items">
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ciudad Juárez, Chih., México
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          El Paso, Texas, EE.&nbsp;UU.
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+          Respuesta en menos de 24 h
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <a href="index.html#contact" style="color:inherit;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--gold-400)'" onmouseout="this.style.color='inherit'">Envíanos un mensaje</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="terminos-y-condiciones.html" aria-label="Términos y condiciones">Términos y condiciones</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Nexírium · Todos los derechos reservados</p>
+    <p class="footer-tag">Technology Opportunities · Ciudad Juárez</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+
+    const applyTheme = (theme) => {
+      if (theme === 'light') html.setAttribute('data-theme', 'light');
+      else html.removeAttribute('data-theme');
+    };
+
+    btn.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      localStorage.setItem('nx-theme', next);
+    });
+  })();
+
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('solid', window.scrollY > 64);
+  }, { passive: true });
+
+  const burger = document.getElementById('burger');
+  const mobMenu = document.getElementById('mob-menu');
+  burger.addEventListener('click', () => {
+    const open = burger.classList.toggle('open');
+    mobMenu.classList.toggle('open', open);
+  });
+  mobMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobMenu.classList.remove('open');
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!navEl.contains(e.target) && !mobMenu.contains(e.target)) {
+      burger.classList.remove('open');
+      mobMenu.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
